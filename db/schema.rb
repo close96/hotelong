@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20171210050751) do
     t.integer  "member_id",   null: false
     t.integer  "guest_count", null: false
     t.integer  "sum_price",   null: false
-    t.datetime "start_date",  null: false
-    t.datetime "end_date",    null: false
+    t.date     "start_date",  null: false
+    t.date     "end_date",    null: false
     t.boolean  "is_extend",   null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

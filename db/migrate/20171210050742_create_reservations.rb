@@ -6,8 +6,8 @@ class CreateReservations < ActiveRecord::Migration
       t.references :member, null: false			# 外部キー
       t.integer :guest_count, null: false		# 宿泊人数
       t.integer :sum_price, null: false			# 合計金額
-      t.datetime :start_date, null: false		# チェックイン日
-      t.datetime :end_date, null: false			# チェックアウト日
+      t.date :start_date, null: false		# チェックイン日
+      t.date :end_date, null: false			# チェックアウト日
       t.boolean :is_extend, null: false			# 延泊であるかどうか
 
       t.timestamps null: false
