@@ -10,11 +10,18 @@
 #  tel             :integer          not null
 #  age             :integer          not null
 #  email           :string           not null
-#  admin_authority :boolean          not null
+#  admin_authority :boolean          default(FALSE), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 class Member < ActiveRecord::Base
   has_many :reservations
+
+  def password=(val)
+    if val.present?
+      self.password = BCrypt::Password.create(val)
+    end
+    @password = val
+  end
 end
