@@ -1,2 +1,12 @@
 <h1>Reservations#show</h1>
-<p>Find me in app/views/reservations/show.html.erb</p>
+<table class="list">
+  <tr>
+    <td><%= @reservation.id %></td>
+    <td><%= @reservation.room_id %></td>
+    <td><%= @reservation.plan_id %></td>
+    <td><%= @reservation.guest_count %></td>
+    <td><%= @reservation.sum_price %></td>
+    <td><%= @reservation.start_date %></td>
+    <td><%= @reservation.end_date %></td>
+  </tr>
+</table>

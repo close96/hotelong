@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :plans
   resources :reservations
   resources :rooms
+  resource :session, only: [:create, :destroy]
 end
