@@ -4,11 +4,12 @@
 #
 #  id              :integer          not null, primary key
 #  user_id         :string           not null
-#  password        :string           not null
+#  hashed_password :string           not null
 #  name            :string           not null
+#  sex             :integer          not null
 #  address         :string           not null
-#  tel             :integer          not null
-#  age             :integer          not null
+#  tel             :string           not null
+#  birthday        :date             not null
 #  email           :string           not null
 #  admin_authority :boolean          default(FALSE), not null
 #  created_at      :datetime         not null
@@ -20,8 +21,20 @@ class Member < ActiveRecord::Base
 
   def password=(val)
     if val.present?
-      self.password = BCrypt::Password.create(val)
+      self.hashed_password = BCrypt::Password.create(val)
     end
     @password = val
+  end
+
+  class << self
+    def authenticate(member_id, password)
+      member = find_by(member_id: member_id)
+      if member && member.hashed_password.present? &&
+        BCrypt::Password.new(member.hashed_password) == password
+        member
+      else
+        nil
+      end
+    end
   end
 end

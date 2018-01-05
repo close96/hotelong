@@ -14,5 +14,5 @@
 #
 
 class ClassRoom < ActiveRecord::Base
-  hsa_many :rooms
+  has_many :rooms
 end
