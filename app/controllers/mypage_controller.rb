@@ -1,6 +1,7 @@
 class MypageController < ApplicationController
   def index
-  	# todo: ログインの実装
-  	@member = current_member
+  	if !current_member
+      redirect_to :root
+    end
   end
 end
