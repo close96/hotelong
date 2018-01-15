@@ -4,4 +4,10 @@
 <%= link_to "ログアウト", :session,
       method: :delete, data: { confirm: "ログアウトしますか？" } %>
 </p>
+
+<div class="menubar">
+<%= menu_link_to "部屋一覧", :rooms %>
+&nbsp; | &nbsp; <%= menu_link_to "プラン一覧", "#" %>
+&nbsp; | &nbsp; <%= menu_link_to "マイページ", "#" %>
+</div>
 <% end %>
