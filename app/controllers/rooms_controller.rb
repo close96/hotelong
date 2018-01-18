@@ -7,7 +7,6 @@ class RoomsController < ApplicationController
   # 部屋詳細
   def show
     @room = Room.find(params[:id])
-    # @plan = @room.plans.find_by(params[:id])
-    # todo: シードデータおかしくね？
+    @plan = @room.plans.find_by(params[:id])
   end
 end

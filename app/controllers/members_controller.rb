@@ -1,5 +1,7 @@
 class MembersController < ApplicationController
+  # 会員詳細
   def show
+    @member = Member.find(params[:id])
   end
 
   def new

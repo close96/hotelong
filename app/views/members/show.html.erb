@@ -1,2 +1,22 @@
 <h1>Members#show</h1>
-<p>Find me in app/views/members/show.html.erb</p>
+<table class="list">
+  <tr>
+    <td>ユーザID</td>
+    <td><%= @member.user_id %></td>
+    <td>名前</td>
+    <td><%= @member.name %></td>
+    <td>性別</td>
+    <td><%= @member.sex %></td>
+    <td>住所</td>
+    <td><%= @member.address %></td>
+    <td>電話番号</td>
+    <td><%= @member.tel %></td>
+    <td>生年月日</td>
+    <td><%= @member.birthday %></td>
+    <td>メールアドレス</td>
+    <td><%= @member.email %></td>
+    <td>管理者権限</td>
+    <td><%= @member.admin_authority %></td>
+  </tr>
+  </tr>
+</table>
