@@ -2,8 +2,6 @@
 <table class="list">
   <% @rooms.each do |room| %>
   <tr>
-    <td><%= room.id %></td>
-    <td><%= room.class_room_id %></td>
     <td>部屋番号</td>
     <td><%= link_to room.room_number, room %></td>
   </tr>

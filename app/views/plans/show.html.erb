@@ -1,2 +1,9 @@
 <h1>Plans#show</h1>
-<p>Find me in app/views/plans/show.html.erb</p>
+<table class="list">
+  <tr>
+    <td>適用人数</td>
+    <td><%= @plan.apply_count %></td>
+    <td>価格</td>
+    <td><%= @plan.price %></td>
+  </tr>
+</table>

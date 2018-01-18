@@ -1,12 +1,11 @@
 <h1>Reservations#show</h1>
 <table class="list">
   <tr>
-    <td><%= @reservation.id %></td>
+    <td>部屋番号</td>
     <td><%= @reservation.room_id %></td>
-    <td><%= @reservation.plan_id %></td>
+    <td>宿泊人数</td>
     <td><%= @reservation.guest_count %></td>
+    <td>合計金額</td>
     <td><%= @reservation.sum_price %></td>
-    <td><%= @reservation.start_date %></td>
-    <td><%= @reservation.end_date %></td>
   </tr>
 </table>
