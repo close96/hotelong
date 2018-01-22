@@ -19,7 +19,10 @@
 class Member < ActiveRecord::Base
   has_many :reservations
 
-  attr_accessor :password
+  validates :password, presence: { on: :create },
+    confirmation: { allow_blank: true }
+
+  attr_accessor :password, :password_confirmation
 
   def password=(val)
     if val.present?

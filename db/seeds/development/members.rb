@@ -10,6 +10,7 @@ admin_authoritys = [true, false]
   Member.create(
     user_id: user_ids[idx],
     password: "password",
+    password_confirmation: "password",
     name: names[idx],
     sex: (idx % 2) + 1,
     address: addresses[idx],
