@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      member: 会員情報
+    attributes:
+      member:
+        user_id: ユーザーID
+        name: 氏名
+        sex: 性別
+        sex_0: 男
+        sex_1: 女
+        address: 住所
+        tel: 電話番号
+        birthday: 生年月日
+        email: メールアドレス

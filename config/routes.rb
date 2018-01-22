@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root "top#index"
-  resources :members
+  resources :members do
+    collection do
+      post 'confirm'
+    end
+  end
   resources :mypage
   resources :plans
   resources :reservations

@@ -24,7 +24,7 @@ class MembersController < ApplicationController
   
   # 会員の新規登録
   def create
-    @member = Member.new(params[:member].permit(:user_id, :password, :password_confirmation, :name, :sex, :address, :tel, :birthday, :email, :admin_authority))
+    @member = Member.new(member_params)
     if @member.save
       redirect_to @member, notice: "会員を登録しました。"
     else
@@ -47,9 +47,16 @@ class MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     @member.destroy
-    redirect_to root_path, notice: "会員を削除しました。"
+    redirect_to root_path, notice: "退会しました。"
   end
 
   def confirm
+    @member = Member.new(member_params)
+  end
+
+  private
+  def member_params
+    attrs = [:user_id, :password, :password_confirmation, :name, :sex, :address, :tel, :birthday, :email]
+    params.require(:member).permit(attrs)
   end
 end

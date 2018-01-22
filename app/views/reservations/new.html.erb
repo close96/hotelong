@@ -1,2 +1,8 @@
-<h1>Reservations#new</h1>
-<p>Find me in app/views/reservations/new.html.erb</p>
+<% @page_title = "予約" %>
+
+<h1><%= @page_title %></h1>
+
+<%= form_for @reservation do |form| %>
+<%= render "form", form: form %>
+<p><%= form.submit %></p>
+<% end %>

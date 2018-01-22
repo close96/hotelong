@@ -1,20 +1,7 @@
 <table class="attr">
   <tr>
-    <th><%= form.label :user_id, "ユーザID" %></th>
-    <td><%= form.text_field :user_id, size: 8 %></td>
-  </tr>
-  <tr>
-    <th><%= form.label :name, "氏名" %></th>
-    <td><%= form.text_field :name %></td>
-  </tr>
-  <tr>
-    <th><%= Member.human_attribute_name(:sex) %></th>
-    <td>
-      <%= form.radio_button :sex, 0 %>
-      <%= form.label :sex_0 %>
-      <%= form.radio_button :sex, 1 %>
-      <%= form.label :sex_1 %>
-    </td>
+    <td>部屋番号</td>
+    <td><%= @reservation.room_number %></td>
   </tr>
   <tr>
     <th><%= form.label :birthday, for: "member_birthday_1i" %></th>

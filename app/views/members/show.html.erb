@@ -6,7 +6,13 @@
     <td>氏名</td>
     <td><%= @member.name %></td>
     <td>性別</td>
-    <td><%= @member.sex %></td>
+    <td>
+      <% if @member.sex == 0 %>
+        男
+      <% else %>
+        女
+      <% end %>
+    </td>
     <td>住所</td>
     <td><%= @member.address %></td>
     <td>電話番号</td>
@@ -16,7 +22,14 @@
     <td>メールアドレス</td>
     <td><%= @member.email %></td>
     <td>管理者権限</td>
-    <td><%= @member.admin_authority %></td>
+    <td>
+      <% if @member.admin_authority %>
+        有り
+      <% else %>
+        無し
+      <% end %>
+    </td>
+
     <td>
       <%= link_to "編集", controller: "members", action: "edit",id: current_member %> |
       <%= link_to "退会", @member, method: :delete,

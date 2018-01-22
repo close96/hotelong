@@ -1,2 +1,51 @@
-<h1>Members#confirm</h1>
-<p>Find me in app/views/members/confirm.html.erb</p>
+<h1>登録確認</h1>
+
+<%= form_for @member do |form| %>
+<table class="attr">
+  <tr>
+    <th><%= form.label :user_id %></th>
+    <td><%= @member.user_id %></td>
+    <td><%= form.hidden_field :user_id %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :name %></th>
+    <td><%= @member.name %></td>
+    <td><%= form.hidden_field :name %></td>
+  </tr>
+  <tr>
+    <th><%= Member.human_attribute_name(:sex) %></th>
+    <td>
+      <% if @member.sex == 0 %>
+        男
+      <% else %>
+        女
+      <% end %>
+    </td>
+    <td><%= form.hidden_field :sex %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :birthday, for: "member_birthday_1i" %></th>
+    <td><%= @member.birthday %></td>
+    <td><%= form.hidden_field :birthday %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :email %></th>
+    <td><%= @member.email %></td>
+    <td><%= form.hidden_field :email %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :address %></th>
+    <td><%= @member.address %></td>
+    <td><%= form.hidden_field :address %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :tel %></th>
+    <td><%= @member.tel %></td>
+    <td><%= form.hidden_field :tel %></td>
+  </tr>
+</table>
+
+<p>この内容で登録しますか？</p>
+<p><%= form.submit "登録する" %></p>
+
+<% end %>
