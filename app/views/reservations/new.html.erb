@@ -1,8 +1,27 @@
-<% @page_title = "予約" %>
+<h1>予約</h1>
 
-<h1><%= @page_title %></h1>
+<%= form_for @reservation, url: {action: 'confirm'} do |form| %>
+  <table class="attr">
+    <tr>
+      <th><%= form.label :room_number %></th>
+    </tr>
+    <tr>
+      <th><%= form.label :guest_count %></th>
+      <% guest_options = [1, 2, 3] %>
+      <td><%= form.select :guest_count, guest_options %>人</td>
+    </tr>
+    <tr>
+      <th><%= form.label :stay_date %></th>
+      <td>
+        <%= form.date_select :start_date,
+              start_year: Date.today.year, start_month: Date.today.month, start_day: Date.today.day, use_month_numbers: true %>〜
+        <%= form.date_select :end_date,
+              start_year: Date.today.year, start_month: Date.today.month, start_day: Date.today.day, use_month_numbers: true %>
+      </td>
+    </tr>
+  </table>
 
-<%= form_for @reservation do |form| %>
-<%= render "form", form: form %>
-<p><%= form.submit %></p>
+  <p><%= form.submit "確認画面へ" %></p>
 <% end %>
+
+<%= link_to "トップへ", root_path %>

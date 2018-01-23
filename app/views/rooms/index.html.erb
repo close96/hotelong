@@ -1,10 +1,12 @@
 <h1>部屋一覧</h1>
 
 <table class="list">
-  <% @rooms.each do |room| %>
   <tr>
     <td>部屋番号</td>
-    <td><%= link_to room.room_number, room %></td>
   </tr>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= link_to room.room_number, room %></td>
+    </tr>
   <% end %>
 </table>

@@ -2,6 +2,7 @@ class RoomsController < ApplicationController
   # 部屋一覧
   def index
     @rooms = Room.all
+    @reservations = Reservation.joins(:rooms).all
   end
 
   # 部屋詳細

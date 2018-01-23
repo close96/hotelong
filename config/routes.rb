@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   end
   resources :mypage
   resources :plans
-  resources :reservations
+  resources :reservations do
+    collection do
+      post 'confirm'
+    end
+  end
   resources :rooms
   resource :session, only: [:create, :destroy]
 end

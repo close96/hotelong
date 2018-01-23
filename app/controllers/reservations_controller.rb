@@ -12,6 +12,7 @@ class ReservationsController < ApplicationController
 
   # 新規作成フォーム
   def new
+    @reservation = Reservation.new()
   end
 
   # 更新フォーム
@@ -32,5 +33,11 @@ class ReservationsController < ApplicationController
 
   # 確認フォーム
   def confirm
+  end
+
+  private
+  def reservation_params
+    attrs = [:room_id, :plan_id, :member_id, :guest_count, :sum_price, :start_date, :end_date, :is_extend]
+    params.require(:reservation).permit(attrs)
   end
 end

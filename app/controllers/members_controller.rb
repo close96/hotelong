@@ -35,7 +35,7 @@ class MembersController < ApplicationController
   # 会員情報の更新
   def update
     @member = Member.find(params[:id])
-    @member.assign_attributes(params[:member].permit(:user_id, :password, :password_confirmation, :name, :sex, :address, :tel, :birthday, :email, :admin_authority))
+    @member.assign_attributes(params[member_params])
     if @member.save
       redirect_to @member, notice: "会員情報を更新しました。"
     else
