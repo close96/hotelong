@@ -3,8 +3,26 @@
   <tr>
     <td>部屋番号</td>
     <td><%= @room.room_number %></td>
-    <td>適用できるプラン</td>
+    <td>プラン</td>
     <td><%= @plan.name %></td>
+    <td>部屋スタイル</td>
+    <td><%= @room.style_name %></td>
+    <td>基本宿泊人数</td>
+    <td><%= @room.expect_count %></td>
+    <td>エクストラベッドの有無</td>
+    <td>
+      <% if @room.can_add_bed %>
+        有り
+      <% else %>
+        無し
+      <% end %>
+    </td>
+    <td>一人あたりの宿泊料金</td>
+    <td><%= @room.person_price %></td>
   </tr>
 </table>
+
+<p>基本宿泊人数より少ない人数で宿泊される場合は、宿泊料金を割増させていただきます。ご了承ください。</p>
+<p>また、宿泊人数の都合でエクストラベッドを使用する場合は、価格を割引させていただきます。</p>
+
 <%= link_to "この部屋を予約する" , controller: "reservations", action: "new", room_id: @room.id %>

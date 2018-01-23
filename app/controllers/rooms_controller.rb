@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
 
   # 部屋詳細
   def show
-    @room = Room.find(params[:id])
+    @room = Room.joins("join class_rooms on class_rooms.id = rooms.class_room_id").select("rooms.*, class_rooms.*").find(params[:id])
     @plan = @room.plans.find_by(params[:id])
   end
 end
