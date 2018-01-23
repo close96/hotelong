@@ -3,11 +3,31 @@
   <tr>
     <td>部屋番号</td>
     <td>宿泊人数</td>
+    <td>適用プラン</td>
     <td>合計金額</td>
+    <td>チェックイン</td>
+    <td>チェックアウト</td>
+    <td>連泊指定</td>
   </tr>
   <tr>
-    <td><%= @reservation.room_id %></td>
+    <td><%= @reservation.room_number %></td>
     <td><%= @reservation.guest_count %></td>
+      <% if @reservation.plan.name == "ノープラン" %>
+        <td>無し</td>
+      <% else %>
+        <td>
+          <%= @reservation.plan.name %>
+        </td>
+      <% end %>
     <td><%= @reservation.sum_price %></td>
+    <td><%= @reservation.start_date %></td>
+    <td><%= @reservation.end_date %></td>
+    <td>
+      <% if @reservation.is_extend %>
+        有り
+      <% else %>
+        無し
+      <% end %>
+    </td>
   </tr>
 </table>

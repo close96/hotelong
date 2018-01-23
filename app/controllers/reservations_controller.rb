@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
 
   # 予約詳細
   def show
-    @reservation = Reservation.find(params[:id])
+    @reservation = Reservation.joins(:room, :plan).select("reservations.*, rooms.*, plans.*").find(params[:id])
   end
 
   # 新規作成フォーム
