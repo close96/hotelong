@@ -3,6 +3,9 @@
 <%= form_for @member do |form| %>
   <table class="attr">
     <tr>
+      <th><%= form.label :user_id %></th>
+      <td><%= @member.user_id %></td>
+      <td><%= form.hidden_field :user_id %></td>
     </tr>
     <tr>
       <th><%= form.label :name %></th>

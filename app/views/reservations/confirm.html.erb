@@ -1,2 +1,39 @@
-<h1>Reservations#confirm</h1>
-<p>Find me in app/views/reservations/confirm.html.erb</p>
+<h1>予約確認</h1>
+
+<%= form_for @reservation do |form| %>
+  <table class="attr">
+    <%= form.hidden_field :member_id, :value => current_member.id %>
+    <%= form.hidden_field :room_id, :value => @room_id %>
+    <tr>
+      <th><%= form.label :room_number %></th>
+      <td><%= @room_number %></td>
+      <td><%= form.hidden_field :room_number, :value => @room_number %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :guest_count %></th>
+      <td><%= @reservation.guest_count %>人</td>
+      <td><%= form.hidden_field :guest_count %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :plan_name %></th>
+      <td><%= @plan_name %></td>
+      <td><%= form.hidden_field :plan_id %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :stay_date %></th>
+      <td><%= @reservation.start_date %>〜<%= @reservation.end_date %></td>
+      <td><%= form.hidden_field :start_date %></td>
+      <td><%= form.hidden_field :end_date %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :sum_price %></th>
+      <td><%= @sum_price %></td>
+      <td><%= form.hidden_field :sum_price, :value => @sum_price %></td>
+    </tr>
+  </table>
+  <p>この内容で予約しますか？</p>
+
+  <p><%= form.submit "予約する" %></p>
+<% end %>
+
+<%= link_to "トップへ", root_path %>

@@ -2,13 +2,16 @@
 
 <%= form_for @reservation, url: {action: 'confirm'} do |form| %>
   <table class="attr">
-    <tr>
-      <th><%= form.label :room_number %></th>
-    </tr>
+    <%= form.hidden_field :member_id, :value => current_member.id %>
+    <%= form.hidden_field :room_id, :value => @room_id %>
     <tr>
       <th><%= form.label :guest_count %></th>
       <% guest_options = [1, 2, 3] %>
       <td><%= form.select :guest_count, guest_options %>人</td>
+    </tr>
+    <tr>
+      <th><%= form.label :plan_name %></th>
+      <td><%= form.select :plan_id, @options %></td>
     </tr>
     <tr>
       <th><%= form.label :stay_date %></th>
