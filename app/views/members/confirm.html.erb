@@ -43,6 +43,11 @@
       <td><%= @member.tel %></td>
       <td><%= form.hidden_field :tel %></td>
     </tr>
+    <tr>
+      <th><%= form.label :password %></th>
+      <td><%= @member.password %></td>
+      <td><%= form.hidden_field :password %></td>
+    </tr>
   </table>
 
   <p>この内容で登録しますか？</p>
