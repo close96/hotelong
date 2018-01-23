@@ -30,6 +30,7 @@ class ReservationsController < ApplicationController
   def destroy
   end
 
+  # 確認フォーム
   def confirm
   end
 end

@@ -1,15 +1,17 @@
-<h1>Rooms#show</h1>
+<h1>部屋詳細</h1>
+
 <table class="list">
   <tr>
     <td>部屋番号</td>
-    <td><%= @room.room_number %></td>
-    <td>プラン</td>
-    <td><%= @plan.name %></td>
     <td>部屋スタイル</td>
-    <td><%= @room.style_name %></td>
     <td>基本宿泊人数</td>
-    <td><%= @room.expect_count %></td>
     <td>エクストラベッドの有無</td>
+    <td>一人あたりの宿泊料金</td>
+  </tr>
+  <tr>
+    <td><%= @room.room_number %></td>
+    <td><%= @room.style_name %></td>
+    <td><%= @room.expect_count %></td>
     <td>
       <% if @room.can_add_bed %>
         有り
@@ -17,8 +19,27 @@
         無し
       <% end %>
     </td>
-    <td>一人あたりの宿泊料金</td>
     <td><%= @room.person_price %></td>
+  </tr>
+  <tr>
+    <td>適用できるプラン</td>
+    <td>プラン価格</td>
+    <td>適用宿泊人数</td>
+  </tr>
+  <tr>
+    <% @plans.each do |plan| %>
+      <% if plan.name != "ノープラン" %>
+        <td>
+          <%= plan.name %>
+        </td>
+        <td>
+          <%= plan.price %>
+        </td>
+        <td>
+          <%= plan.apply_count %>
+        </td>
+      <% end %>
+    <% end %>
   </tr>
 </table>
 

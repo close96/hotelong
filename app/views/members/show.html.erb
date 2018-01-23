@@ -1,11 +1,19 @@
-<h1>Members#show</h1>
+<h1>会員情報</h1>
+
 <table class="list">
   <tr>
     <td>ユーザID</td>
-    <td><%= @member.user_id %></td>
     <td>氏名</td>
-    <td><%= @member.name %></td>
     <td>性別</td>
+    <td>住所</td>
+    <td>電話番号</td>
+    <td>生年月日</td>
+    <td>メールアドレス</td>
+    <td>管理者権限</td>
+  </tr>
+  <tr>
+    <td><%= @member.user_id %></td>
+    <td><%= @member.name %></td>
     <td>
       <% if @member.sex == 0 %>
         男
@@ -13,15 +21,10 @@
         女
       <% end %>
     </td>
-    <td>住所</td>
     <td><%= @member.address %></td>
-    <td>電話番号</td>
     <td><%= @member.tel %></td>
-    <td>生年月日</td>
     <td><%= @member.birthday %></td>
-    <td>メールアドレス</td>
     <td><%= @member.email %></td>
-    <td>管理者権限</td>
     <td>
       <% if @member.admin_authority %>
         有り

@@ -1,11 +1,13 @@
-<h1>Reservations#index</h1>
+<h1>予約一覧</h1>
 <table class="list">
   <% @reservations.each do |reservation| %>
-  <tr>
-    <td>宿泊開始日</td>
-    <td><%= link_to reservation.start_date, reservation %></td>
-    <td>宿泊終了日</td>
-    <td><%= link_to reservation.end_date, reservation %></td>
-  </tr>
+    <tr>
+      <td>宿泊開始日</td>
+      <td>宿泊終了日</td>
+    </tr>
+    <tr>
+      <td><%= link_to reservation.start_date, reservation %></td>
+      <td><%= link_to reservation.end_date, reservation %></td>
+    </tr>
   <% end %>
 </table>

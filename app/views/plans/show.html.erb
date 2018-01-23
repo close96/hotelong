@@ -1,9 +1,14 @@
-<h1>Plans#show</h1>
+<h1>プラン詳細</h1>
+
 <table class="list">
   <tr>
+    <td>プラン名</td>
     <td>適用人数</td>
-    <td><%= @plan.apply_count %></td>
     <td>価格</td>
+  </tr>
+  <tr>
+    <td><%= @plan.name %></td>
+    <td><%= @plan.apply_count %></td>
     <td><%= @plan.price %></td>
   </tr>
 </table>
