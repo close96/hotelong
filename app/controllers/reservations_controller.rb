@@ -7,7 +7,8 @@ class ReservationsController < ApplicationController
 
   # 予約詳細
   def show
-    @reservation = Reservation.joins(:room, :plan).select("reservations.*, rooms.*, plans.*").find(params[:id])
+    @reservation = Reservation.find(params[:id])
+    @reservations = Reservation.joins(:room, :plan).select("reservations.*, rooms.*, plans.*").find(params[:id])
   end
 
   # 新規作成フォーム
@@ -39,6 +40,9 @@ class ReservationsController < ApplicationController
 
   # 削除
   def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to reservations_path, notice: "削除しました。"
   end
 
   # 確認フォーム

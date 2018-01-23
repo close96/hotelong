@@ -10,24 +10,29 @@
     <td>連泊指定</td>
   </tr>
   <tr>
-    <td><%= @reservation.room_number %></td>
-    <td><%= @reservation.guest_count %></td>
-      <% if @reservation.plan.name == "ノープラン" %>
+    <td><%= @reservations.room_number %></td>
+    <td><%= @reservations.guest_count %></td>
+      <% if @reservations.plan.name == "ノープラン" %>
         <td>無し</td>
       <% else %>
         <td>
-          <%= @reservation.plan.name %>
+          <%= @reservations.plan.name %>
         </td>
       <% end %>
-    <td><%= @reservation.sum_price %></td>
-    <td><%= @reservation.start_date %></td>
-    <td><%= @reservation.end_date %></td>
+    <td><%= @reservations.sum_price %></td>
+    <td><%= @reservations.start_date %></td>
+    <td><%= @reservations.end_date %></td>
     <td>
-      <% if @reservation.is_extend %>
+      <% if @reservations.is_extend %>
         有り
       <% else %>
         無し
       <% end %>
+    </td>
+
+    <td>
+      <%= link_to "削除", @reservation, method: :delete,
+            data: { confirm: "本当に削除しますか?" } %>
     </td>
   </tr>
 </table>
