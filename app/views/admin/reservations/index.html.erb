@@ -6,8 +6,8 @@
       <td>チェックアウト</td>
     </tr>
     <tr>
-      <td><%= link_to reservation.start_date, reservation %></td>
-      <td><%= link_to reservation.end_date, reservation %></td>
+      <td><%= link_to reservation.start_date, [:admin, reservation] %></td>
+      <td><%= link_to reservation.end_date, [:admin, reservation] %></td>
     </tr>
   <% end %>
 </table>

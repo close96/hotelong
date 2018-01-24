@@ -1,0 +1,12 @@
+<h1>会員一覧</h1>
+
+<table class="list">
+  <tr>
+    <td>ユーザーID</td>
+  </tr>
+  <% @members.each do |member| %>
+    <tr>
+      <td><%= link_to member.user_id, [:admin, member] %></td>
+    </tr>
+  <% end %>
+</table>

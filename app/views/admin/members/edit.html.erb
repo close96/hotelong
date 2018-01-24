@@ -1,0 +1,61 @@
+<h1>会員情報の編集</h1>
+
+<%= form_for [:admin, @member] do |form| %>
+  <table class="attr">
+    <tr>
+      <th><%= form.label :user_id %></th>
+      <td><%= form.text_field :user_id, size: 8 %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :name %></th>
+      <td><%= form.text_field :name %></td>
+    </tr>
+    <tr>
+      <th><%= Member.human_attribute_name(:sex) %></th>
+      <td>
+        <%= form.radio_button :sex, 0 %>
+        <%= form.label :sex_0 %>
+        <%= form.radio_button :sex, 1 %>
+        <%= form.label :sex_1 %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= form.label :birthday, for: "member_birthday_1i" %></th>
+      <td><%= form.date_select :birthday,
+                start_year: 1940, end_year: Time.now.year,
+                use_month_numbers: true %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :email %></th>
+      <td><%= form.text_field :email %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :address %></th>
+      <td><%= form.text_field :address %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :tel %></th>
+      <td><%= form.text_field :tel %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :admin_authority %></th>
+      <td><%= form.check_box :admin_authority %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :password, "パスワード" %></th>
+      <td><%= form.password_field :password %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :password_confirmation, "確認のためもう一度パスワードを入力してください" %></th>
+      <td><%= form.password_field :password_confirmation %></td>
+    </tr>
+  </table>
+
+  <% unless @member.new_record? %>
+  <p>パスワードを変更しないときは、パスワード入力欄を空にしてください。</p>
+  <% end %>
+
+  <p><%= form.submit "変更する" %></p>
+<% end %>
+
+<%= link_to "管理者トップへ", :admin_root %>

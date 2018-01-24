@@ -1,13 +1,16 @@
 <% if current_member %>
-<p class="member">
-<%= current_member.user_id %>さん |
-<%= link_to "ログアウト", :session,
-      method: :delete, data: { confirm: "ログアウトしますか？" } %>
-</p>
+  <p class="member">
+  <%= current_member.user_id %>さん |
+  <%= link_to "ログアウト", :session,
+        method: :delete, data: { confirm: "ログアウトしますか？" } %>
+  </p>
 
-<div class="menubar">
-<%= menu_link_to "部屋一覧", :rooms %>
-&nbsp; | &nbsp; <%= menu_link_to "プラン一覧", :plans %>
-&nbsp; | &nbsp; <%= menu_link_to "マイページ", :mypage_index %>
-</div>
+  <div class="menubar">
+  <%= menu_link_to "部屋一覧", :rooms %>
+  &nbsp; |&nbsp; <%= menu_link_to "プラン一覧", :plans %>
+  &nbsp; |&nbsp; <%= menu_link_to "マイページ", :mypage_index %>
+  <% if current_member.admin_authority? %>
+    &nbsp; |&nbsp; <%= menu_link_to "管理者TOP", :admin_root %>
+  <% end %>
+  </div>
 <% end %>
