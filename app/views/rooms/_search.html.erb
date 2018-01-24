@@ -1,0 +1,36 @@
+<%= form_for @room, url: search_rooms_path, method: :get do |form| %>
+  <table class="list">
+  <tr>
+    <td><%= form.label :plan_name, "プラン名" %></td>
+    <td><%= form.select :plan, @plans %></td>
+  </tr>
+  <tr>
+    <td><%= form.label :stay_date, "宿泊期間" %></td>
+    <td>
+      <%= form.date_select :start_date,
+                start_year: Date.today.year, start_month: Date.today.month, start_day: Date.today.day, use_month_numbers: true %>〜
+      <%= form.date_select :end_date,
+                start_year: Date.today.year, start_month: Date.today.month, start_day: Date.today.day, use_month_numbers: true %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= form.label :person_count, "宿泊人数" %></th>
+    <% person_options = [1, 2, 3] %>
+    <td><%= form.select :person_count, person_options %>人</td>
+  </tr>
+  <tr>
+    <th><%= form.label :price, "予算" %></th>
+    <td><%= form.text_field :price %></td>
+  </tr>
+  <tr>
+    <td>
+      <%= form.radio_button :judge, "and", {:checked => @hoge_and} %>
+      <%= form.label :judge_and, "AND" %>
+      <%= form.radio_button :judge, "or", {:checked => @hoge_or} %>
+      <%= form.label :judge_or, "OR" %>
+    </td>
+  </tr>
+  </table>
+
+  <p><%= form.submit "検索" %></p>
+<% end %>

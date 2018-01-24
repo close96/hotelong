@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       post 'confirm'
     end
   end
-  resources :rooms
+  resources :rooms do
+    collection do
+      get 'search'
+    end
+  end
   resource :session, only: [:create, :destroy]
 end

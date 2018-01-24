@@ -2,6 +2,10 @@ class RoomsController < ApplicationController
   # 部屋一覧
   def index
     @rooms = Room.all
+    @room = Search::Room.new()
+    @plans = Plan.pluck(:name, :id)
+    @hoge_and = true
+    @hoge_or = false
   end
 
   # 部屋詳細
@@ -11,5 +15,24 @@ class RoomsController < ApplicationController
     @options = Plan.joins(:rooms).where("room_id = ?",  params[:id]).pluck(:name, :id)
     session[:room] = params[:id]
     session[:options] = @options
+  end
+
+  def search
+    @room = Search::Room.new(search_params)
+    @rooms = @room.matches.order("rooms.id")
+    @plans = Plan.pluck(:name, :id)
+    if @room.judge == "and"
+      @hoge_and = true
+      @hoge_or = false
+    end
+    if @room.judge == "or"
+      @hoge_or = true
+      @hoge_and = false
+    end
+    render "index"
+  end
+
+  def search_params
+    params.require(:search_room).permit(Search::Room::ATTRIBUTES)
   end
 end

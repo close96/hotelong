@@ -19,4 +19,14 @@ class Reservation < ActiveRecord::Base
   belongs_to :room
   belongs_to :plan
   belongs_to :member
+
+  class << self
+    def notReservedDateRoomNumberList(start_date, end_date)
+      @reserved_room_number_list = Reservation.joins(:room).select("reservations.*, rooms.*")
+        .where("(? <= start_date and start_date < ?) or (? <= end_date and end_date < ?)", start_date, end_date, start_date, end_date)
+        .pluck(:room_number).uniq
+      @not_reserved_room_number_list = Room.where.not(room_number: @reserved_room_number_list).pluck(:room_number)
+      return @not_reserved_room_number_list
+    end
+  end
 end

@@ -13,3 +13,12 @@ ja:
         tel: 電話番号
         birthday: 生年月日
         email: メールアドレス
+    models:
+      reservation: 予約情報
+    attributes:
+      reservation:
+        room_number: 部屋番号
+        guest_count: 宿泊人数
+        plan_name: プラン名
+        stay_date: 宿泊機関
+        sum_price: 合計金額
