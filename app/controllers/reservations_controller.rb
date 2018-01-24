@@ -1,25 +1,30 @@
 class ReservationsController < ApplicationController
   # 予約一覧
   def index
-     @reservations = Reservation.where(member_id: current_member)
-     .paginate(page: params[:page], per_page: 5)
+    if !current_member
+      redirect_to :root, notice: "ログインしてください。"
+    end
+    @reservations = Reservation.where(member_id: current_member)
+    .paginate(page: params[:page], per_page: 5)
   end
 
   # 予約詳細
   def show
+    if !current_member
+      redirect_to :root, notice: "ログインしてください。"
+    end
     @reservation = Reservation.find(params[:id])
     @reservations = Reservation.joins(:room, :plan).select("reservations.*, rooms.*, plans.*").find(params[:id])
   end
 
   # 新規作成フォーム
   def new
+    if !current_member
+      redirect_to :root, notice: "ログインしてください。"
+    end
     @reservation = Reservation.new()
     @options = session[:options]
     @room_id = session[:room]
-  end
-
-  # 更新フォーム
-  def edit
   end
 
   # 新規登録
@@ -32,10 +37,6 @@ class ReservationsController < ApplicationController
     else
       render "new"
     end
-  end
-
-  # 更新
-  def update
   end
 
   # 削除

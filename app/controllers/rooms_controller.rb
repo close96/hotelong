@@ -1,6 +1,9 @@
 class RoomsController < ApplicationController
   # 部屋一覧
   def index
+    if !current_member
+      redirect_to :root, notice: "ログインしてください。"
+    end
     @rooms = Room.all
     @room = Search::Room.new()
     @plans = Plan.pluck(:name, :id)
@@ -10,6 +13,9 @@ class RoomsController < ApplicationController
 
   # 部屋詳細
   def show
+    if !current_member
+      redirect_to :root, notice: "ログインしてください。"
+    end
     @room = Room.joins(:class_room).select("rooms.*, class_rooms.*").find(params[:id])
     @plans = Plan.joins(:rooms).where("room_id = ?",  params[:id])
     @options = Plan.joins(:rooms).where("room_id = ?",  params[:id]).pluck(:name, :id)
@@ -18,18 +24,22 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @room = Search::Room.new(search_params)
-    @rooms = @room.matches.order("rooms.id")
-    @plans = Plan.pluck(:name, :id)
-    if @room.judge == "and"
-      @hoge_and = true
-      @hoge_or = false
+    if !current_member
+      redirect_to :root, notice: "ログインしてください。"
+    else
+      @room = Search::Room.new(search_params)
+      @rooms = @room.matches.order("rooms.id")
+      @plans = Plan.pluck(:name, :id)
+      if @room.judge == "and"
+        @hoge_and = true
+        @hoge_or = false
+      end
+      if @room.judge == "or"
+        @hoge_or = true
+        @hoge_and = false
+      end
+      render "index"
     end
-    if @room.judge == "or"
-      @hoge_or = true
-      @hoge_and = false
-    end
-    render "index"
   end
 
   def search_params

@@ -2,9 +2,12 @@ class MembersController < ApplicationController
   # 会員詳細
   def show
     if !current_member
-      redirect_to :root
+      redirect_to :root, notice: "ログインしてください。"
     else
       @member = Member.find(params[:id])
+    end
+    if @member != current_member
+      redirect_to :root, notice: "他の会員のデータにはアクセスできません。"
     end
   end
 
@@ -16,9 +19,12 @@ class MembersController < ApplicationController
   # 更新フォーム
   def edit
     if !current_member
-      redirect_to :root
+      redirect_to :root, notice: "ログインしてください。"
     else
       @member = Member.find(params[:id])
+    end
+    if @member != current_member
+      redirect_to :root, notice: "他の会員のデータにはアクセスできません。"
     end
   end
   
@@ -35,7 +41,7 @@ class MembersController < ApplicationController
   # 会員情報の更新
   def update
     @member = Member.find(params[:id])
-    @member.assign_attributes(params[member_params])
+    @member.assign_attributes(member_params)
     if @member.save
       redirect_to @member, notice: "会員情報を更新しました。"
     else
@@ -47,7 +53,7 @@ class MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     @member.destroy
-    redirect_to root_path, notice: "退会しました。"
+    redirect_to :root, notice: "退会しました。"
   end
 
   # 確認フォーム
