@@ -1,0 +1,13 @@
+<h1>プラン一覧</h1>
+
+<table class="list">
+  <% @plans.each do |plan| %>
+  <tr>
+    <td>プラン名</td>
+    <td><%= link_to plan.name, [:admin, plan] %></td>
+  </tr>
+  <% end %>
+</table>
+<%= will_paginate @plans %>
+
+<%= link_to "プランの新規作成", controller: "plans", action: "new" %>

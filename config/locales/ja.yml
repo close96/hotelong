@@ -3,6 +3,7 @@ ja:
     models:
       member: 会員情報
       reservation: 予約情報
+      plan: プラン情報
     attributes:
       member:
         user_id: ユーザーID
@@ -21,3 +22,10 @@ ja:
         plan_name: プラン名
         stay_date: 宿泊期間
         sum_price: 合計金額
+      plan:
+        plan_name: プラン名
+        apply_count: 適用人数
+        price: 金額
+  will_paginate:
+    previous_label: "前"
+    next_label: "次"

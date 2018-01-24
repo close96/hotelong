@@ -26,17 +26,11 @@ Rails.application.routes.draw do
         post 'confirm'
       end
     end
-    resources :mypage
-    resources :plans
-    resources :reservations do
+    resources :plans do
       collection do
         post 'confirm'
       end
     end
-    resources :rooms do
-      collection do
-        get 'search'
-      end
-    end
+    resources :reservations
   end
 end

@@ -2,6 +2,7 @@ class Admin::MembersController < Admin::Base
   # 会員一覧
   def index
     @members = Member.all
+    .paginate(page: params[:page], per_page: 5)
   end
 
   # 会員詳細

@@ -1,0 +1,23 @@
+<h1>プラン情報の編集</h1>
+
+<%= form_for [:admin, @plan] do |form| %>
+  <table class="attr">
+    <tr>
+      <th><%= form.label :plan_name %></th>
+      <td><%= form.text_field :name, size: 8 %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :apply_count %></th>
+      <% apply_options = [1, 2, 3] %>
+      <td><%= form.select :apply_count, apply_options %>人</td>
+    </tr>
+    <tr>
+      <th><%= form.label :price %></th>
+      <td><%= form.text_field :price %></td>
+    </tr>
+  </table>
+
+  <p><%= form.submit "変更する" %></p>
+<% end %>
+
+<%= link_to "管理者トップへ", :admin_root %>

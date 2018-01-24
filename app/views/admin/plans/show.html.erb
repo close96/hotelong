@@ -1,0 +1,20 @@
+<h1>プラン詳細</h1>
+
+<table class="list">
+  <tr>
+    <td>プラン名</td>
+    <td>適用人数</td>
+    <td>価格</td>
+  </tr>
+  <tr>
+    <td><%= @plan.name %></td>
+    <td><%= @plan.apply_count %></td>
+    <td><%= @plan.price %></td>
+
+    <td>
+      <%= link_to "編集", [:edit, :admin, @plan] %> |
+      <%= link_to "削除", [:admin, @plan], method: :delete,
+            data: { confirm: "本当に削除しますか?" } %>
+    </td>
+  </tr>
+</table>

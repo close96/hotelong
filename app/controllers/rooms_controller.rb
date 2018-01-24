@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
       redirect_to :root, notice: "ログインしてください。"
     end
     @rooms = Room.all
+    .paginate(page: params[:page], per_page: 10)
     @room = Search::Room.new()
     @plans = Plan.pluck(:name, :id)
     @hoge_and = true
