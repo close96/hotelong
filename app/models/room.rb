@@ -20,12 +20,12 @@ class Room < ActiveRecord::Base
       @room = Room.joins(:class_room).select("rooms.*, class_rooms.*").where("rooms.id = ?", room_id).first
       person_price = @room.person_price
       if guest_count > @room.expect_count
-        1.upto(@room.expect_count - guest_count) do
+        1.upto(guest_count - @room.expect_count) do
           person_price = person_price * @room.discount_rate
         end
       end
       if guest_count < @room.expect_count
-        1.upto(guest_count - @room.expect_count) do
+        1.upto(@room.expect_count - guest_count) do
           person_price = person_price * @room.surcharge_rate
         end
       end

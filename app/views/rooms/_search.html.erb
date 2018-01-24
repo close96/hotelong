@@ -1,4 +1,4 @@
-<%= form_for Array(@room), url: search_rooms_path, method: :get do |form| %>
+<%= form_for Array(@room), url: {action: 'search'}, method: :get do |form| %>
   <table class="list">
   <tr>
     <td><%= form.label :plan_name, "プラン名" %></td>
@@ -19,7 +19,7 @@
     <td><%= form.select :person_count, person_options %>人</td>
   </tr>
   <tr>
-    <th><%= form.label :price, "予算" %></th>
+    <th><%= form.label :price, "予算(1人あたり)" %></th>
     <td><%= form.text_field :price %></td>
   </tr>
   <tr>
