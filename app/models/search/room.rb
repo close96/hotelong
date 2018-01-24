@@ -23,11 +23,11 @@ class Search::Room < Search::Base
       results = results.joins(:plans).select("rooms.*, plans.*")
       .where("plans.id = ?", plan.to_i)
       results = results.where(room_number: Reservation.notReservedDateRoomNumberList(start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))) if start_date.present? && end_date.present?
-      results = results.joins(:class_room).select("rooms.*, class_rooms.*")
+      results = results.joins(:class_room).select("rooms.*")
       .where("expect_count >= ? or (expect_count = ? and can_add_bed = ?)", person_count.to_i, person_count.to_i - 1, true) if person_count.present?
-      results = results.joins(:class_room).select("rooms.*, class_rooms.*")
+      results = results.joins(:class_room).select("rooms.*")
       .where("person_price <= ?", price.to_i) if plan.to_i == 1 && price.present?
-      results = results.joins(:class_room, :plans).select("rooms.*, class_rooms.*, plans.*")
+      results = results.joins(:class_room, :plans).select("rooms.*, plans.*")
       .where("plans.id = ? and price / apply_count <= ?", plan.to_i, price.to_i) if plan.to_i != 1 && price.present?
     end
     if judge == "or"
@@ -35,11 +35,11 @@ class Search::Room < Search::Base
       results_array.push(results.joins(:plans).select("rooms.*, plans.*")
       .where("plans.id = ?", plan.to_i))
       results_array.push(results.where(room_number: Reservation.notReservedDateRoomNumberList(start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d")))) if start_date.present? && end_date.present?
-      results_array.push(results.joins(:class_room).select("rooms.*, class_rooms.*")
+      results_array.push(results.joins(:class_room).select("rooms.*")
       .where("expect_count >= ? or (expect_count = ? and can_add_bed = ?)", person_count.to_i, person_count.to_i - 1, true)) if person_count.present?
-      results_array.push(results.joins(:class_room).select("rooms.*, class_rooms.*")
+      results_array.push(results.joins(:class_room).select("rooms.*")
       .where("person_price <= ?", price.to_i)) if plan.to_i == 1 && price.present?
-      results_array.push(results.joins(:class_room, :plans).select("rooms.*, class_rooms.*, plans.*")
+      results_array.push(results.joins(:class_room, :plans).select("rooms.*, plans.*")
       .where("plans.id = ? and price / apply_count <= ?", plan.to_i, price.to_i)) if plan.to_i != 1 && price.present?
       results = results.where(id: results_array.flatten.uniq)
     end
