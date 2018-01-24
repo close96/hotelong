@@ -30,6 +30,7 @@ class RoomsController < ApplicationController
     else
       @room = Search::Room.new(search_params)
       @rooms = @room.matches.order("rooms.id")
+      .paginate(page: params[:page], per_page: 10)
       @plans = Plan.pluck(:name, :id)
       if @room.judge == "and"
         @hoge_and = true
