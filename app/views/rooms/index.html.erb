@@ -6,7 +6,7 @@
   <tr>
     <td>部屋番号</td>
   </tr>
-  <% @rooms.each do |room| %>
+  <% Array(@rooms).each do |room| %>
     <tr>
       <td><%= link_to room.room_number, room %></td>
     </tr>

@@ -1,4 +1,4 @@
-<%= form_for @room, url: search_rooms_path, method: :get do |form| %>
+<%= form_for Array(@room), url: search_rooms_path, method: :get do |form| %>
   <table class="list">
   <tr>
     <td><%= form.label :plan_name, "プラン名" %></td>
