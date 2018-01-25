@@ -1,11 +1,11 @@
 <%= form_for Array(@room), url: {action: 'search'}, method: :get do |form| %>
   <table class="list">
   <tr>
-    <td><%= form.label :plan_name, "プラン名" %></td>
+    <th><%= form.label :plan_name, "プラン名" %></th>
     <td><%= form.select :plan, @plans %></td>
   </tr>
   <tr>
-    <td><%= form.label :stay_date, "宿泊期間" %></td>
+    <th><%= form.label :stay_date, "宿泊期間" %></th>
     <td>
       <%= form.date_select :start_date,
                 start_year: Date.today.year, start_month: Date.today.month, start_day: Date.today.day, use_month_numbers: true %>〜
@@ -23,6 +23,7 @@
     <td><%= form.text_field :price %></td>
   </tr>
   <tr>
+    <th>AND OR 検索</th>
     <td>
       <%= form.radio_button :judge, "and", {:checked => @hoge_and} %>
       <%= form.label :judge_and, "AND" %>

@@ -5,12 +5,12 @@
     <tr>
       <th><%= form.label :user_id %></th>
       <td><%= @member.user_id %></td>
-      <td><%= form.hidden_field :user_id %></td>
+      <%= form.hidden_field :user_id %>
     </tr>
     <tr>
       <th><%= form.label :name %></th>
       <td><%= @member.name %></td>
-      <td><%= form.hidden_field :name %></td>
+      <%= form.hidden_field :name %>
     </tr>
     <tr>
       <th><%= Member.human_attribute_name(:sex) %></th>
@@ -21,32 +21,32 @@
           女
         <% end %>
       </td>
-      <td><%= form.hidden_field :sex %></td>
+      <%= form.hidden_field :sex %>
     </tr>
     <tr>
       <th><%= form.label :birthday, for: "member_birthday_1i" %></th>
       <td><%= @member.birthday %></td>
-      <td><%= form.hidden_field :birthday %></td>
+      <%= form.hidden_field :birthday %>
     </tr>
     <tr>
       <th><%= form.label :email %></th>
       <td><%= @member.email %></td>
-      <td><%= form.hidden_field :email %></td>
+      <%= form.hidden_field :email %>
     </tr>
     <tr>
       <th><%= form.label :address %></th>
       <td><%= @member.address %></td>
-      <td><%= form.hidden_field :address %></td>
+      <%= form.hidden_field :address %>
     </tr>
     <tr>
       <th><%= form.label :tel %></th>
       <td><%= @member.tel %></td>
-      <td><%= form.hidden_field :tel %></td>
+      <%= form.hidden_field :tel %>
     </tr>
     <tr>
       <th><%= form.label :password %></th>
       <td><%= @member.password %></td>
-      <td><%= form.hidden_field :password %></td>
+      <%= form.hidden_field :password %>
     </tr>
   </table>
 

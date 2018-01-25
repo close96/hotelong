@@ -2,8 +2,8 @@
 <table class="list">
   <% @reservations.each do |reservation| %>
     <tr>
-      <td>チェックイン</td>
-      <td>チェックアウト</td>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
     </tr>
     <tr>
       <td><%= link_to reservation.start_date, [:admin, reservation] %></td>

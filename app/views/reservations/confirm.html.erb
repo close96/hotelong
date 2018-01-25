@@ -7,28 +7,28 @@
     <tr>
       <th><%= form.label :room_number %></th>
       <td><%= @room_number %></td>
-      <td><%= form.hidden_field :room_number, :value => @room_number %></td>
+      <%= form.hidden_field :room_number, :value => @room_number %>
     </tr>
     <tr>
       <th><%= form.label :guest_count %></th>
       <td><%= @reservation.guest_count %>人</td>
-      <td><%= form.hidden_field :guest_count %></td>
+      <%= form.hidden_field :guest_count %>
     </tr>
     <tr>
       <th><%= form.label :plan_name %></th>
       <td><%= @plan_name %></td>
-      <td><%= form.hidden_field :plan_id %></td>
+      <%= form.hidden_field :plan_id %>
     </tr>
     <tr>
       <th><%= form.label :stay_date %></th>
       <td><%= @reservation.start_date %>〜<%= @reservation.end_date %></td>
-      <td><%= form.hidden_field :start_date %></td>
-      <td><%= form.hidden_field :end_date %></td>
+      <%= form.hidden_field :start_date %>
+      <%= form.hidden_field :end_date %>
     </tr>
     <tr>
       <th><%= form.label :sum_price %></th>
       <td><%= @sum_price %></td>
-      <td><%= form.hidden_field :sum_price, :value => @sum_price %></td>
+      <%= form.hidden_field :sum_price, :value => @sum_price %>
     </tr>
   </table>
   <p>この内容で予約しますか？</p>
